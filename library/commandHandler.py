@@ -5,7 +5,7 @@ import csv
 commands = []
 
 def load_commands() :
-    commands.clear
+    commands.clear()
     with open('library/commands.csv', newline='') as csvfile:
         reader = csv.reader(csvfile, delimiter=',', quotechar = '|')
         for row in reader:
@@ -36,9 +36,17 @@ def get_command(cmdName) :
     if len(toReturn) > 0:
         return toReturn
     else :
-        print('Command title not found')
+        print('Command not found')
+        return toReturn
 
 def list_all() :
     load_commands()
-    return commands
+    for cmd in commands :
+        print(cmd)
+
+def print_commands(commands_list) :
+    counter = 1
+    for cmd in commands_list :
+        print(str(counter) + ' ' + cmd[counter - 1])
+        counter += 1
 
