@@ -39,18 +39,36 @@ while 1:
                 print_commands(cmd)
                 print('Which command? Enter the number')
                 y = input('> ')
-                if (int(y) < len(cmd)) :
-                    print('the amendment?')
+                if not (y.isdigit()) :
+                    print('did not enter a number. Returning.')
+                elif (int(y) - 1 < len(cmd)) :
+                    print('the amendment/link?')
                     x = input('> ')
-                    os.system(cmd[y][1] + ' ' + x)
+                    print(cmd[y][1] + x)
+                    os.system(cmd[y][1] + x)
                 else :
-                    print('Not a listed option')
+                    print('Not a listed option. Returning.')
 
             else :
-                print('the amendment?')
+                print('the amendment/link?')
                 y = input('> ')
-                print(cmd[0][1])
-                os.system(cmd[0][1] + ' ' + y)
+                print(cmd[0][1] + y)
+                os.system(cmd[0][1] + y)
+
+    elif x == 'delete' :
+        print('Which command to delete?')
+        y = input('> ')
+        cmd = get_command(y)
+        if (cmd) :
+            print('Which command to delete?')
+            print_commands(cmd)
+            y = input('> ')
+            if not (y.isdigit()):
+                print('Did not enter a number. Returning.')
+            elif (int(y) - 1 < len(cmd)) :
+                delete_command(cmd[int(y) - 1])
+            else :
+                print('Not a listed option. Returning.')
 
     else:
         print('Unknown command')

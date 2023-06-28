@@ -50,3 +50,14 @@ def print_commands(commands_list) :
         print(str(counter) + ' ' + cmd[counter - 1])
         counter += 1
 
+def delete_command(command) :
+    with open('library/commands.csv', 'r+') as csvfile :
+        reader = csv.reader(csvfile)
+        rows = [row for row in csv.reader(csvfile) if not ((command[0] in row) and (command[1] in row))]
+        csvfile.seek(0)
+        csvfile.truncate()
+        writer = csv.writer(csvfile)
+        writer.writerows(rows)
+            
+
+
