@@ -1,12 +1,16 @@
 # commandHandler.py
 
 import csv
+from pathlib import Path
+
+script_location = Path(__file__).absolute().parent
+file_location = script_location / 'commands.csv'
 
 commands = []
 
 def load_commands() :
     commands.clear()
-    with open('library/commands.csv', newline='') as csvfile:
+    with open(file_location, newline='') as csvfile:
         reader = csv.reader(csvfile, delimiter=',', quotechar = '|')
         for row in reader:
             commands.append(row)
